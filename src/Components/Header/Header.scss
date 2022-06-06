@@ -1,0 +1,26 @@
+header {
+  height: 7rem;
+  box-shadow: 0 2px 4px 0 rgba($color: #000000, $alpha: 0.1);
+  padding: 0 5rem;
+  .wrapper {
+    height: 100%;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    width: 50%;
+  }
+  nav {
+    width: 50%;
+    ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .active {
+      border-bottom: 2px solid black;
+    }
+  }
+}
