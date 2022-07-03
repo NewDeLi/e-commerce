@@ -1,0 +1,14 @@
+.login {
+  height: 100vh;
+  margin-top: 2rem;
+
+  .wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .toggleButtonGroup {
+    width: 240px;
+  }
+}

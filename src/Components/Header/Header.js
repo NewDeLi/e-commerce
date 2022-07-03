@@ -1,9 +1,12 @@
-import React from "react";
-import "./Header.scss";
-import Logo from "./../../assets/logo.png";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import Logo from "./../../assets/logo.png";
+import { AuthContext } from "../../firebase/auth";
+import "./Header.scss";
 
 export default function Header() {
+  const { currentUser, logout } = useContext(AuthContext);
+
   return (
     <header>
       <div className="wrapper">
@@ -15,25 +18,55 @@ export default function Header() {
         <nav>
           <ul>
             <li>
-              <NavLink to="/" exact activeClassName="active">
+              <NavLink to="/" exact="true" activeclassname="active">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/search" activeClassName="active">
+              <NavLink to="/search" activeclassname="active">
                 Search
               </NavLink>
             </li>
             <li>
-              <NavLink to="/cart" activeClassName="active">
+              <NavLink to="/cart" activeclassname="active">
                 Your shopping cart
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/registriation" activeClassName="active">
-                Register/Login
-              </NavLink>
-            </li>
+
+            {currentUser && (
+              <>
+                <li>
+                  <NavLink to="/myAccount" activeclassname="active">
+                    My Account
+                  </NavLink>
+                </li>
+                <li>
+                  <Link
+                    onClick={() => {
+                      logout();
+                    }}
+                    to="/"
+                  >
+                    Logout
+                  </Link>
+                </li>
+              </>
+            )}
+
+            {!currentUser && (
+              <>
+                <li>
+                  <NavLink to="/register" activeclassname="active">
+                    Register
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/login" activeclassname="active">
+                    Login
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>

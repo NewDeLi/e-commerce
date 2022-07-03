@@ -2,12 +2,14 @@ import React from "react";
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 
-export default function MainLayout({ children }) {
+const HomepageLayout = (props) => {
   return (
     <div>
-      <Header />
-      <main className="main">{children}</main>
+      <Header {...props} />
+      <main className="homepage">{props.children}</main>
       <Footer />
     </div>
   );
-}
+};
+
+export default HomepageLayout;

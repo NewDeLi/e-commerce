@@ -1,7 +1,10 @@
 header {
   height: 7rem;
-  box-shadow: 0 2px 4px 0 rgba($color: #000000, $alpha: 0.1);
   padding: 0 5rem;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
   .wrapper {
     height: 100%;
     margin: 0 1rem;
@@ -20,7 +23,7 @@ header {
       align-items: center;
     }
     .active {
-      border-bottom: 2px solid black;
+      border: 2px solid rgba(0, 0, 0, 0.54);
     }
   }
 }

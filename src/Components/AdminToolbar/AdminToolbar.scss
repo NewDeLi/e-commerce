@@ -1,0 +1,11 @@
+.adminToolbar {
+  height: 5rem;
+  padding: 0 5rem;
+  background-color: #1976d2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ul {
+    list-style-type: none;
+  }
+}
