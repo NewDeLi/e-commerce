@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./../../assets/logo.png";
-import { AuthContext } from "../../firebase/auth";
+import { AuthContext } from "../../Context Api/AuthContext";
 import "./Header.scss";
 
 export default function Header() {

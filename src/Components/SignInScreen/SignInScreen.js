@@ -4,7 +4,7 @@ import GoogleButton from "react-google-button";
 import FormInput from "../forms/FormInput/FormInput";
 import FormButton from "../forms/FormButton/FormButton";
 
-import { AuthContext } from "../../firebase/auth";
+import { AuthContext } from "../../Context Api/AuthContext";
 
 import { Grid } from "@mui/material";
 import "./SignInScreen.scss";

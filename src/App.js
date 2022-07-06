@@ -1,6 +1,6 @@
 import React from "react";
 import PageRouter from "./Components/PageRouter/PageRouter";
-import { AuthPovider } from "./firebase/auth";
+import { AuthPovider } from "../src/Context Api/AuthContext";
 
 function App() {
   return (
