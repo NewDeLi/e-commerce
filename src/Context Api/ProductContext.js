@@ -3,7 +3,7 @@ import {
   handleFetchProduct,
   handleAddProduct,
   handleDeleteProduct,
-} from "../../firebase/products";
+} from "../firebase/products";
 
 export const ProductContext = createContext();
 

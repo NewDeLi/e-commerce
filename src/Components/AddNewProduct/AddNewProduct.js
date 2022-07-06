@@ -3,7 +3,7 @@ import FormInput from "../forms/FormInput/FormInput";
 import FormButton from "../forms/FormButton/FormButton";
 import FormSelect from "../forms/FormSelect/FormSelect";
 import { Grid } from "@mui/material";
-import { ProductContext } from "../../Context Api/ProductContext/ProductContext";
+import { ProductContext } from "../../Context Api/ProductContext";
 import "./AddNewProduct.scss";
 
 export default function AddNewProduct() {

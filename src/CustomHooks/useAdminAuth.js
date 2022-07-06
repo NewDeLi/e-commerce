@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { AuthContext } from "../firebase/auth";
+import { AuthContext } from "../Context Api/AuthContext";
 import checkUserIsAdmn from "../Components/Utils/checkUserAdmin";
 import { useNavigate } from "react-router-dom";
 

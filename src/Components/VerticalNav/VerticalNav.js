@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../firebase/auth";
+import { AuthContext } from "../../Context Api/AuthContext";
 import UserProfile from "../UserProfile/UserProfile";
 import "./VerticalNav.scss";
 

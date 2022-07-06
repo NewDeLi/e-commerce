@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 import VerticalNav from "../Components/VerticalNav/VerticalNav";
-import { AuthContext } from "../firebase/auth";
+import { AuthContext } from "../Context Api/AuthContext";
 import { NavLink } from "react-router-dom";
 
 export default function AdminLayout({ children }) {

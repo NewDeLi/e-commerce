@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../../Context Api/ProductContext/ProductContext";
+import { ProductContext } from "../../Context Api/ProductContext";
 import FormButton from "../forms/FormButton/FormButton";
 import { Grid } from "@mui/material";
 import "./ManageProducts.scss";
