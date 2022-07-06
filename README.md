@@ -13,5 +13,3 @@
 - Context API (Statemanagement)
 - Firebase (Database)
 - SCSS, Material UI (Styling)
-
-
