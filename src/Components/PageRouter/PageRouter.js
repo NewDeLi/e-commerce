@@ -45,6 +45,14 @@ export default function PageRouter() {
           }
         />
         <Route
+          path="/search/:filterType"
+          element={
+            <MainLayout>
+              <Search />
+            </MainLayout>
+          }
+        />
+        <Route
           path="/cart"
           element={
             <MainLayout>

@@ -35,6 +35,8 @@ export const ProductProvider = ({ children }) => {
         products,
         handleAddProduct,
         handleDeleteProduct,
+        handleFetchProduct,
+        setProducts,
       }}
     >
       {children}

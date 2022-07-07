@@ -1,14 +1,47 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../../Context Api/ProductContext";
 import FormButton from "../forms/FormButton/FormButton";
+import FormSelect from "../forms/FormSelect/FormSelect";
 import { Grid } from "@mui/material";
 import "./SearchResult.scss";
 
 export default function SearchResults() {
-  const { products } = useContext(ProductContext);
+  const { products, setProducts, handleFetchProduct } =
+    useContext(ProductContext);
+  const navigate = useNavigate();
+  const { filterType } = useParams();
+
+  useEffect(() => {
+    handleFetchProduct(setProducts, filterType);
+  }, [filterType]);
+
+  const handleFilter = (event) => {
+    const currentFilter = event.target.value;
+    navigate(`/search/${currentFilter}`);
+  };
 
   return (
     <div className="searchResults">
+      <FormSelect
+        defaultValue={filterType ? filterType : ""} //fix mui warning: filtertype is undefined when component mounts
+        label="Search"
+        options={[
+          {
+            value: "showAll",
+            name: "Show all",
+          },
+          {
+            value: "mens",
+            name: "Mens",
+          },
+          {
+            value: "womens",
+            name: "Womens",
+          },
+        ]}
+        onChange={handleFilter}
+      />
       <Grid container direction="row" justifyContent="space-around">
         {Array.isArray(products) &&
           products.length > 0 &&
