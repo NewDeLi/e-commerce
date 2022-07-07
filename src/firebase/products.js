@@ -1,4 +1,10 @@
-import { getFirestore, collection, onSnapshot } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { app } from "./config";
 import { setDoc, doc, serverTimestamp, deleteDoc } from "firebase/firestore";
 
@@ -23,7 +29,7 @@ export const handleAddProduct = async (category, name, image, price) => {
 };
 
 export const handleFetchProduct = async (setProducts) => {
-  const productsRef = collection(db, "products");
+  const productsRef = query(collection(db, "products"), orderBy("timestamp"));
   try {
     onSnapshot(productsRef, (snapshot) => {
       setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
