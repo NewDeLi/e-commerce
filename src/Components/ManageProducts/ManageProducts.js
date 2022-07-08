@@ -1,11 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../Context Api/ProductContext";
 import FormButton from "../forms/FormButton/FormButton";
 import { Grid } from "@mui/material";
 import "./ManageProducts.scss";
+import LoadeMore from "../LoadMore/LoadeMore";
 
 export default function ManageProducts() {
-  const { products, handleDeleteProduct } = useContext(ProductContext);
+  const { products, handleDeleteProduct, handleFetchProduct, setProducts } =
+    useContext(ProductContext);
+
+  const [currenLimit, setCurrentLimit] = useState(3);
+  const filterType = undefined;
+
+  useEffect(() => {
+    handleFetchProduct(setProducts, filterType, currenLimit);
+  }, [currenLimit]);
 
   return (
     <div className="manageProducts">
@@ -45,6 +54,13 @@ export default function ManageProducts() {
             );
           })}
       </Grid>
+      <div className="loadMore">
+        <LoadeMore
+          filterType={filterType}
+          setCurrentLimit={setCurrentLimit}
+          currenLimit={currenLimit}
+        />
+      </div>
     </div>
   );
 }

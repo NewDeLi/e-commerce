@@ -5,6 +5,7 @@ import {
   orderBy,
   query,
   where,
+  limit,
 } from "firebase/firestore";
 import { app } from "./config";
 import { setDoc, doc, serverTimestamp, deleteDoc } from "firebase/firestore";
@@ -29,8 +30,19 @@ export const handleAddProduct = async (category, name, image, price) => {
   return productRef;
 };
 
-export const handleFetchProduct = async (setProducts, filterType) => {
-  const productsRef = query(collection(db, "products"), orderBy("timestamp"));
+export const handleFetchProduct = async (
+  setProducts,
+  filterType,
+  limitOfProducts
+) => {
+  if (typeof limitOfProducts !== "number") {
+    return;
+  }
+  const productsRef = query(
+    collection(db, "products"),
+    orderBy("timestamp"),
+    limit(limitOfProducts)
+  );
 
   try {
     onSnapshot(productsRef, (snapshot) => {
@@ -39,11 +51,13 @@ export const handleFetchProduct = async (setProducts, filterType) => {
   } catch (error) {
     console.log(error);
   }
+
   if (filterType && filterType !== "showAll") {
     const productsRef = query(
       collection(db, "products"),
       orderBy("timestamp"),
-      where("category", "==", filterType ? filterType : "")
+      where("category", "==", filterType ? filterType : ""),
+      limit(limitOfProducts)
     );
 
     try {

@@ -1,20 +1,23 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../../Context Api/ProductContext";
 import FormButton from "../forms/FormButton/FormButton";
 import FormSelect from "../forms/FormSelect/FormSelect";
 import { Grid } from "@mui/material";
 import "./SearchResult.scss";
+import LoadeMore from "../LoadMore/LoadeMore";
 
 export default function SearchResults() {
   const { products, setProducts, handleFetchProduct } =
     useContext(ProductContext);
-  const navigate = useNavigate();
+
+  const [currenLimit, setCurrentLimit] = useState(3);
   const { filterType } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    handleFetchProduct(setProducts, filterType);
-  }, [filterType]);
+    handleFetchProduct(setProducts, filterType, currenLimit);
+  }, [filterType, currenLimit]);
 
   const handleFilter = (event) => {
     const currentFilter = event.target.value;
@@ -69,6 +72,13 @@ export default function SearchResults() {
             );
           })}
       </Grid>
+      <div className="loadMore">
+        <LoadeMore
+          filterType={filterType}
+          setCurrentLimit={setCurrentLimit}
+          currenLimit={currenLimit}
+        />
+      </div>
     </div>
   );
 }
