@@ -4,9 +4,9 @@ import Header from "../Components/Header/Header";
 
 export default function MainLayout({ children }) {
   return (
-    <div>
+    <div className="Main">
       <Header />
-      <main className="main">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );

@@ -58,15 +58,15 @@ a:hover {
   background-color: #1976d2;
   border: 1px solid white;
 }
-
-.main {
-  height: calc(100vh-7rem);
-  width: 100vw;
-  max-width: 1250px;
-  padding: 0 5rem;
-  margin: 5rem auto;
+.Main {
+  height: calc(100% - 7rem - 5rem);
+  main {
+    width: 100vw;
+    max-width: 1250px;
+    padding: 0 5rem;
+    margin: 5rem auto;
+  }
 }
-
 .adminLayout {
   height: calc(100vh - 7rem);
 
