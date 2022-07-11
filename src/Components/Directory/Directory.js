@@ -7,12 +7,12 @@ export default function Directory() {
   return (
     <div className="directory">
       <div className="item" style={{ backgroundImage: `url(${Women})` }}>
-        <a href="#" className="linkButton">
+        <a href="/search/womens" className="linkButton">
           Shop women
         </a>
       </div>
       <div className="item" style={{ backgroundImage: `url(${Men})` }}>
-        <a href="#" className="linkButton">
+        <a href="/search/mens" className="linkButton">
           Shop men
         </a>
       </div>

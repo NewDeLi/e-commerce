@@ -28,7 +28,7 @@ export default function ManageProducts() {
             return (
               <Grid
                 container
-                justifyContent="space-between"
+                justifyContent="space-around"
                 alignItems="center"
                 direction="row"
                 item
@@ -41,8 +41,6 @@ export default function ManageProducts() {
                 <Grid item>
                   <p>Product: {name}</p>
                   <p>Price: {price}€</p>
-                </Grid>
-                <Grid item>
                   <FormButton
                     type="button"
                     onClick={() => handleDeleteProduct(id)}
