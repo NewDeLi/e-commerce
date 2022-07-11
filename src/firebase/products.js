@@ -1,4 +1,12 @@
-import { getFirestore, collection, onSnapshot } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+  limit,
+} from "firebase/firestore";
 import { app } from "./config";
 import { setDoc, doc, serverTimestamp, deleteDoc } from "firebase/firestore";
 
@@ -22,14 +30,45 @@ export const handleAddProduct = async (category, name, image, price) => {
   return productRef;
 };
 
-export const handleFetchProduct = async (setProducts) => {
-  const productsRef = collection(db, "products");
+export const handleFetchProduct = async (
+  setProducts,
+  filterType,
+  limitOfProducts
+) => {
+  if (typeof limitOfProducts !== "number") {
+    return;
+  }
+  const productsRef = query(
+    collection(db, "products"),
+    orderBy("timestamp"),
+    limit(limitOfProducts)
+  );
+
   try {
     onSnapshot(productsRef, (snapshot) => {
       setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
   } catch (error) {
     console.log(error);
+  }
+
+  if (filterType && filterType !== "showAll") {
+    const productsRef = query(
+      collection(db, "products"),
+      orderBy("timestamp"),
+      where("category", "==", filterType ? filterType : ""),
+      limit(limitOfProducts)
+    );
+
+    try {
+      onSnapshot(productsRef, (snapshot) => {
+        setProducts(
+          snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+        );
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

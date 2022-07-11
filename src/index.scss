@@ -68,27 +68,32 @@ a:hover {
 }
 
 .adminLayout {
-  height: calc(100% - 6.5rem - 5.8rem - 3.6rem);
+  height: calc(100vh - 7rem);
+
   .controlPanel {
-    position: relative;
-    display: inline-block;
+    display: flex;
     width: 100%;
     min-height: 100%;
-    padding: 3rem 0 6rem 25rem;
     border-bottom: 1px solid #d3d3d3;
 
     .sidebar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 25rem;
-      height: 100%;
-      z-index: 1;
+      min-width: 25rem;
+      min-height: 100%;
       border-right: 1px solid #d3d3d3;
     }
 
     .content {
       padding: 0 10px;
+      width: calc(100vw - 25rem);
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .controlPanel {
+    flex-direction: column;
+    .content {
+      min-width: 100vw;
     }
   }
 }
