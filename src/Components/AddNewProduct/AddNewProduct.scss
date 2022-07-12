@@ -2,7 +2,29 @@
   width: 100%;
   display: grid;
   place-items: center;
+  .formRow {
+    width: 480px;
+  }
+
   h2 {
     text-align: center;
+  }
+  .ck-editor {
+    width: 240px;
+    width: 480px;
+    .ck-editor__editable {
+      min-height: 300px;
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .addNewProduct {
+    .formRow {
+      max-width: 240px;
+    }
+    .ck-editor {
+      width: 240px;
+    }
   }
 }

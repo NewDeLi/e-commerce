@@ -31,6 +31,12 @@ export default function ProductsDetailsCard() {
           <li>
             <FormButton>Add to Cart</FormButton>
           </li>
+          <li>
+            <div
+              className="productInfo"
+              dangerouslySetInnerHTML={{ __html: products.info }}
+            />
+          </li>
         </ul>
       </div>
     </div>

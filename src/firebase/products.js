@@ -13,7 +13,7 @@ import { setDoc, doc, serverTimestamp, deleteDoc } from "firebase/firestore";
 
 const db = getFirestore(app);
 
-export const handleAddProduct = async (category, name, image, price) => {
+export const handleAddProduct = async (category, name, image, price, info) => {
   const productRef = doc(collection(db, "products"));
   let timestamp = serverTimestamp();
 
@@ -24,6 +24,7 @@ export const handleAddProduct = async (category, name, image, price) => {
       image,
       price,
       timestamp: timestamp,
+      info,
     });
   } catch (err) {
     console.log(err);
