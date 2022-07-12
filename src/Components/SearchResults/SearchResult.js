@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../../Context Api/ProductContext";
 import FormButton from "../forms/FormButton/FormButton";
 import FormSelect from "../forms/FormSelect/FormSelect";
@@ -8,7 +8,7 @@ import "./SearchResult.scss";
 import LoadeMore from "../LoadMore/LoadeMore";
 
 export default function SearchResults() {
-  const { products, setProducts, handleFetchProduct } =
+  const { products, setProducts, handleFetchProducts } =
     useContext(ProductContext);
 
   const [currenLimit, setCurrentLimit] = useState(3);
@@ -16,7 +16,7 @@ export default function SearchResults() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    handleFetchProduct(setProducts, filterType, currenLimit);
+    handleFetchProducts(setProducts, filterType, currenLimit);
   }, [filterType, currenLimit]);
 
   const handleFilter = (event) => {
@@ -50,19 +50,29 @@ export default function SearchResults() {
           products.length > 0 &&
           products.map((product, index) => {
             const { name, image, price, category, id } = product;
-            if (!name || !image || !category || typeof price === "undefined") {
+            if (
+              !name ||
+              !image ||
+              !category ||
+              typeof price === "undefined" ||
+              !id
+            ) {
               return <></>;
             }
             return (
               <Grid item key={index}>
                 <ul>
                   <li>
-                    <img src={image} alt="product thumbnail" />
+                    <Link to={`/product/${id}`}>
+                      <img src={image} alt="product thumbnail" />
+                    </Link>
                   </li>
                   <li>
-                    <h3>{name}</h3>
-                    <h4> {category}</h4>
-                    <h5>{price}€</h5>
+                    <Link to={`/product/${id}`}>
+                      <h3>{name}</h3>
+                      <h4> {category}</h4>
+                      <h5>{price}€</h5>
+                    </Link>
                   </li>
                   <li>
                     <FormButton>Add to Cart</FormButton>

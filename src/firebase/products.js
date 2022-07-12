@@ -6,6 +6,7 @@ import {
   query,
   where,
   limit,
+  getDoc,
 } from "firebase/firestore";
 import { app } from "./config";
 import { setDoc, doc, serverTimestamp, deleteDoc } from "firebase/firestore";
@@ -30,7 +31,7 @@ export const handleAddProduct = async (category, name, image, price) => {
   return productRef;
 };
 
-export const handleFetchProduct = async (
+export const handleFetchProducts = async (
   setProducts,
   filterType,
   limitOfProducts
@@ -69,6 +70,16 @@ export const handleFetchProduct = async (
     } catch (error) {
       console.log(error);
     }
+  }
+};
+
+export const handleFetchProduct = async (productID) => {
+  const productRef = doc(db, "products", productID);
+  try {
+    const snapshot = await getDoc(productRef);
+    return snapshot.data();
+  } catch (error) {
+    // console.log(error)
   }
 };
 

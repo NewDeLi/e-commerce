@@ -16,6 +16,7 @@ import Search from "../../pages/Search/Search";
 import Cart from "../../pages/Cart/Cart";
 import MyAccount from "../../pages/MyAccount/MyAccount";
 import Admin from "../../pages/Admin/Admin";
+import ProductsDetails from "../../pages/ProductsDetails/ProductsDetails";
 
 //high order components
 import WithAuth from "../highOrderComponents/withAuth";
@@ -49,6 +50,14 @@ export default function PageRouter() {
           element={
             <MainLayout>
               <Search />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/product/:productID"
+          element={
+            <MainLayout>
+              <ProductsDetails />
             </MainLayout>
           }
         />
