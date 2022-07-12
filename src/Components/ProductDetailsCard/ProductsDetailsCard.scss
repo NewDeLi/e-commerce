@@ -1,0 +1,31 @@
+.productDetailsCard {
+  max-width: 80rem;
+  margin: 0 auto 10rem;
+  .headerImage {
+    display: block;
+    width: 100%;
+    margin: 2rem auto;
+
+    img {
+      display: block;
+      width: 100%;
+      margin: 0;
+    }
+  }
+  .productDetails {
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style-type: none;
+      margin: 0 auto 1rem;
+
+      h1,
+      h3 {
+        margin: 0;
+      }
+    }
+  }
+}
