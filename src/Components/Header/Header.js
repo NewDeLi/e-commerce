@@ -3,9 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "./../../assets/logo.png";
 import { AuthContext } from "../../Context Api/AuthContext";
 import "./Header.scss";
+import { CartContext } from "../../Context Api/CartContext";
 
 export default function Header() {
   const { currentUser, logout } = useContext(AuthContext);
+  const { cart } = useContext(CartContext);
   const [toggle, setToggle] = useState(true);
 
   const handleClick = () => {
@@ -13,6 +15,15 @@ export default function Header() {
   };
 
   const boxClassName = toggle ? "topnav" : "topnav responsive";
+
+  const cartQuantities = cart.map((object) => {
+    return object.quantity;
+  });
+
+  const getSum = (total, num) => {
+    return total + num;
+  };
+  const totalQuantity = cartQuantities.reduce(getSum, 0);
 
   return (
     <header>
@@ -33,7 +44,7 @@ export default function Header() {
             Search
           </NavLink>
           <NavLink to="/cart" activeclassname="active">
-            Your shopping cart
+            Shopping Cart({totalQuantity})
           </NavLink>
 
           {currentUser && (

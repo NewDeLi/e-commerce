@@ -6,10 +6,12 @@ import FormSelect from "../forms/FormSelect/FormSelect";
 import { Grid } from "@mui/material";
 import "./SearchResult.scss";
 import LoadeMore from "../LoadMore/LoadeMore";
+import { CartContext } from "../../Context Api/CartContext";
 
 export default function SearchResults() {
   const { products, setProducts, handleFetchProducts } =
     useContext(ProductContext);
+  const { handleAddToCart } = useContext(CartContext);
 
   const [currenLimit, setCurrentLimit] = useState(3);
   const { filterType } = useParams();
@@ -75,7 +77,13 @@ export default function SearchResults() {
                     </Link>
                   </li>
                   <li>
-                    <FormButton>Add to Cart</FormButton>
+                    <FormButton
+                      onClick={() => {
+                        handleAddToCart(product);
+                      }}
+                    >
+                      Add to Cart
+                    </FormButton>
                   </li>
                 </ul>
               </Grid>
