@@ -80,7 +80,6 @@ export const handleFetchProduct = async (productID) => {
     const snapshot = await getDoc(productRef);
     return snapshot.data();
   } catch (error) {
-    // console.log(error)
   }
 };
 
