@@ -1,14 +1,23 @@
 .directory {
-  height: 100%;
+  height: 100vh;
   display: flex;
   .item {
     width: 50%;
     height: 100%;
-    background-image: url("../../assets/team-fredi-women-unsplash.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     display: grid;
     place-items: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .directory {
+    display: flex;
+    flex-direction: column;
+    .item {
+      width: 100%;
+    }
   }
 }

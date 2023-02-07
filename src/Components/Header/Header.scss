@@ -1,29 +1,88 @@
 header {
-  height: 7rem;
-  padding: 0 5rem;
+  width: 100%;
+  min-height: 7rem;
+  padding: 0rem 5rem;
   position: sticky;
   top: 0;
-  background-color: white;
   z-index: 2;
-  .wrapper {
+  background-color: white;
+
+  .topnav {
     height: 100%;
     margin: 0 1rem;
     display: flex;
     align-items: center;
   }
   .logo {
-    width: 50%;
-  }
-  nav {
-    width: 50%;
-    ul {
-      list-style-type: none;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    .icon {
+      display: none;
     }
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
     .active {
       border: 2px solid rgba(0, 0, 0, 0.54);
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .topnav {
+    flex-direction: column;
+
+    .active {
+      border: 2px solid white;
+    }
+
+    nav a {
+      display: none;
+    }
+    .logo {
+      padding: 1rem;
+      .icon {
+        display: block;
+        justify-self: flex-end;
+        align-self: center;
+        height: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {
+    position: relative;
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 2rem 0;
+      background-color: #333;
+
+      .logo {
+        position: sticky;
+        right: 0;
+        top: 0;
+      }
+      a {
+        display: block;
+        color: white;
+      }
     }
   }
 }

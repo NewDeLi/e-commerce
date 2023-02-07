@@ -66,3 +66,34 @@ a:hover {
   padding: 0 5rem;
   margin: 5rem auto;
 }
+
+.adminLayout {
+  height: calc(100vh - 7rem);
+
+  .controlPanel {
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+    border-bottom: 1px solid #d3d3d3;
+
+    .sidebar {
+      min-width: 25rem;
+      min-height: 100%;
+      border-right: 1px solid #d3d3d3;
+    }
+
+    .content {
+      padding: 0 10px;
+      width: calc(100vw - 25rem);
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .controlPanel {
+    flex-direction: column;
+    .content {
+      min-width: 100vw;
+    }
+  }
+}

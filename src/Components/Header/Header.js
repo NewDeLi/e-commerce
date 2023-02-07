@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./../../assets/logo.png";
 import { AuthContext } from "../../Context Api/AuthContext";
@@ -6,68 +6,64 @@ import "./Header.scss";
 
 export default function Header() {
   const { currentUser, logout } = useContext(AuthContext);
+  const [toggle, setToggle] = useState(true);
+
+  const handleClick = () => {
+    setToggle(!toggle);
+  };
+
+  const boxClassName = toggle ? "topnav" : "topnav responsive";
 
   return (
     <header>
-      <div className="wrapper">
+      <div className={boxClassName}>
         <div className="logo">
           <Link to="/">
-            <img src={Logo} alt="e-commerce logo" height="50vh" width="70vw" />
+            <img src={Logo} alt="e-commerce logo" height="50px" width="70px" />
           </Link>
+          <a href={void 0} className="icon" onClick={handleClick}>
+            <i className="fa fa-bars"></i>
+          </a>
         </div>
         <nav>
-          <ul>
-            <li>
-              <NavLink to="/" exact="true" activeclassname="active">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/search" activeclassname="active">
-                Search
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/cart" activeclassname="active">
-                Your shopping cart
-              </NavLink>
-            </li>
+          <NavLink to="/" exact="true" activeclassname="active">
+            Home
+          </NavLink>
+          <NavLink to="/search" activeclassname="active">
+            Search
+          </NavLink>
+          <NavLink to="/cart" activeclassname="active">
+            Your shopping cart
+          </NavLink>
 
-            {currentUser && (
-              <>
-                <li>
-                  <NavLink to="/myAccount" activeclassname="active">
-                    My Account
-                  </NavLink>
-                </li>
-                <li>
-                  <Link
-                    onClick={() => {
-                      logout();
-                    }}
-                    to="/"
-                  >
-                    Logout
-                  </Link>
-                </li>
-              </>
-            )}
+          {currentUser && (
+            <>
+              <NavLink to="/myAccount" activeclassname="active">
+                My Account
+              </NavLink>
 
-            {!currentUser && (
-              <>
-                <li>
-                  <NavLink to="/register" activeclassname="active">
-                    Register
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/login" activeclassname="active">
-                    Login
-                  </NavLink>
-                </li>
-              </>
-            )}
-          </ul>
+              <Link
+                onClick={() => {
+                  logout();
+                }}
+                to="/"
+              >
+                Logout
+              </Link>
+            </>
+          )}
+
+          {!currentUser && (
+            <>
+              <NavLink to="/register" activeclassname="active">
+                Register
+              </NavLink>
+
+              <NavLink to="/login" activeclassname="active">
+                Login
+              </NavLink>
+            </>
+          )}
         </nav>
       </div>
     </header>

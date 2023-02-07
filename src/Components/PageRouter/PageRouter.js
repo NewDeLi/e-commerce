@@ -20,6 +20,7 @@ import Admin from "../../pages/Admin/Admin";
 //high order components
 import WithAuth from "../highOrderComponents/withAuth";
 import WithAdminAuth from "../highOrderComponents/withAdminAuth";
+import AdminLayout from "../../Layout/AdminLayout";
 
 export default function PageRouter() {
   return (
@@ -37,6 +38,14 @@ export default function PageRouter() {
         />
         <Route
           path="/search"
+          element={
+            <MainLayout>
+              <Search />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/search/:filterType"
           element={
             <MainLayout>
               <Search />
@@ -75,7 +84,6 @@ export default function PageRouter() {
           element={
             <MainLayout>
               <Login />
-              <Register />
             </MainLayout>
           }
         />
@@ -83,9 +91,9 @@ export default function PageRouter() {
           path="/admin"
           element={
             <WithAdminAuth>
-              <MainLayout>
+              <AdminLayout>
                 <Admin />
-              </MainLayout>
+              </AdminLayout>
             </WithAdminAuth>
           }
         />
