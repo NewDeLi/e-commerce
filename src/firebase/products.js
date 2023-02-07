@@ -8,7 +8,7 @@ import {
   limit,
   getDoc,
 } from "firebase/firestore";
-import { app } from "./config";
+import app from "./config";
 import { setDoc, doc, serverTimestamp, deleteDoc } from "firebase/firestore";
 
 const db = getFirestore(app);
