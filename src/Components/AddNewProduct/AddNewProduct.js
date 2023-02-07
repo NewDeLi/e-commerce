@@ -4,6 +4,8 @@ import FormButton from "../forms/FormButton/FormButton";
 import FormSelect from "../forms/FormSelect/FormSelect";
 import { Grid } from "@mui/material";
 import { ProductContext } from "../../Context Api/ProductContext";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "./AddNewProduct.scss";
 
 export default function AddNewProduct() {
@@ -11,6 +13,8 @@ export default function AddNewProduct() {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [price, setPrice] = useState(0);
+  const [productInfo, setProductInfo] = useState("");
+  const [editorReset, setEditorReset] = useState("");
 
   const { handleAddProduct } = useContext(ProductContext);
 
@@ -19,12 +23,14 @@ export default function AddNewProduct() {
     setName("");
     setImage("");
     setPrice(0);
+    setProductInfo("");
+    setEditorReset("");
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      await handleAddProduct(category, name, image, price);
+      await handleAddProduct(category, name, image, price, productInfo);
     } catch (error) {
       // console.log(error)
     } finally {
@@ -39,7 +45,7 @@ export default function AddNewProduct() {
         <Grid
           container
           alignItems="center"
-          justify="center"
+          justifyContent="center"
           direction="column"
           spacing={1}
         >
@@ -96,6 +102,17 @@ export default function AddNewProduct() {
               onChange={(event) => {
                 event.preventDefault();
                 setPrice(event.target.value);
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <CKEditor
+              config={{ placeholder: "Add product info here" }}
+              editor={ClassicEditor}
+              data={editorReset}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setProductInfo(data);
               }}
             />
           </Grid>

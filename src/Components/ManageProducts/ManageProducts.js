@@ -6,14 +6,14 @@ import "./ManageProducts.scss";
 import LoadeMore from "../LoadMore/LoadeMore";
 
 export default function ManageProducts() {
-  const { products, handleDeleteProduct, handleFetchProduct, setProducts } =
+  const { products, handleDeleteProduct, handleFetchProducts, setProducts } =
     useContext(ProductContext);
 
   const [currenLimit, setCurrentLimit] = useState(3);
   const filterType = undefined;
 
   useEffect(() => {
-    handleFetchProduct(setProducts, filterType, currenLimit);
+    handleFetchProducts(setProducts, filterType, currenLimit);
   }, [currenLimit]);
 
   return (
