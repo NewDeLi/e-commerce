@@ -1,12 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./../../assets/logo.png";
 import { AuthContext } from "../../Context Api/AuthContext";
 import "./Header.scss";
+import { useCartStore } from "../../Context Api/ShoppingCard/CartContext";
 
 export default function Header() {
   const { currentUser, logout } = useContext(AuthContext);
   const [toggle, setToggle] = useState(true);
+  const { state, actions } = useCartStore();
+
+  useEffect(() => {
+    actions.getTotal(state.cart);
+  }, [state.cart]);
 
   const handleClick = () => {
     setToggle(!toggle);
@@ -33,7 +39,7 @@ export default function Header() {
             Search
           </NavLink>
           <NavLink to="/cart" activeclassname="active">
-            Your shopping cart
+            Your shopping cart({state.totalQuantity})
           </NavLink>
 
           {currentUser && (

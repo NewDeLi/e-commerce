@@ -3,13 +3,16 @@ import PageRouter from "./Components/PageRouter/PageRouter";
 
 import { AuthPovider } from "./Context Api/AuthContext";
 import { ProductProvider } from "./Context Api/ProductContext";
+import { CartProvider } from "./Context Api/ShoppingCard/CartContext";
 
 function App() {
   return (
     <div className="App">
       <AuthPovider>
         <ProductProvider>
-          <PageRouter />
+          <CartProvider>
+            <PageRouter />
+          </CartProvider>
         </ProductProvider>
       </AuthPovider>
     </div>

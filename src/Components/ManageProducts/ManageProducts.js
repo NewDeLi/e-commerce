@@ -3,7 +3,7 @@ import { ProductContext } from "../../Context Api/ProductContext";
 import FormButton from "../forms/FormButton/FormButton";
 import { Grid } from "@mui/material";
 import "./ManageProducts.scss";
-import LoadeMore from "../LoadMore/LoadeMore";
+import LoadMore from "../LoadMore/LoadMore";
 
 export default function ManageProducts() {
   const { products, handleDeleteProduct, handleFetchProducts, setProducts } =
@@ -53,7 +53,7 @@ export default function ManageProducts() {
           })}
       </Grid>
       <div className="loadMore">
-        <LoadeMore
+        <LoadMore
           filterType={filterType}
           setCurrentLimit={setCurrentLimit}
           currenLimit={currenLimit}

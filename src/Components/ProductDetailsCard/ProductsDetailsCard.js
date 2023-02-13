@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ProductContext } from "../../Context Api/ProductContext";
+import { useCartStore } from "../../Context Api/ShoppingCard/CartContext";
 import FormButton from "../forms/FormButton/FormButton";
 import "./ProductsDetailsCard.scss";
 
@@ -8,11 +9,19 @@ export default function ProductsDetailsCard() {
   const { products, setProducts, fetchProductByID } =
     useContext(ProductContext);
   const { productID } = useParams();
+  const { actions } = useCartStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProductByID(productID);
     return () => setProducts([]);
   }, []);
+
+  const handleAddToCart = (product) => {
+    if (!product) return;
+    actions.addToCart(product);
+    navigate("/cart");
+  };
 
   return (
     <div className="productDetailsCard">
@@ -29,7 +38,10 @@ export default function ProductsDetailsCard() {
             <span>{products.price}€</span>
           </li>
           <li>
-            <FormButton>Add to Cart</FormButton>
+            <FormButton onClick={() => handleAddToCart(products)}>
+              {/*check this with product*/}
+              Add to Cart
+            </FormButton>
           </li>
           <li>
             <div

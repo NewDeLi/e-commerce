@@ -5,11 +5,13 @@ import FormButton from "../forms/FormButton/FormButton";
 import FormSelect from "../forms/FormSelect/FormSelect";
 import { Grid } from "@mui/material";
 import "./SearchResult.scss";
-import LoadeMore from "../LoadMore/LoadeMore";
+import LoadMore from "../LoadMore/LoadMore";
+import { useCartStore } from "../../Context Api/ShoppingCard/CartContext";
 
 export default function SearchResults() {
   const { products, setProducts, handleFetchProducts } =
     useContext(ProductContext);
+  const { actions } = useCartStore();
 
   const [currenLimit, setCurrentLimit] = useState(3);
   const { filterType } = useParams();
@@ -22,6 +24,12 @@ export default function SearchResults() {
   const handleFilter = (event) => {
     const currentFilter = event.target.value;
     navigate(`/search/${currentFilter}`);
+  };
+
+  const handleAddToCart = (product) => {
+    if (!product) return;
+    actions.addToCart(product);
+    navigate("/cart");
   };
 
   return (
@@ -75,7 +83,13 @@ export default function SearchResults() {
                     </Link>
                   </li>
                   <li>
-                    <FormButton>Add to Cart</FormButton>
+                    <FormButton
+                      onClick={() => {
+                        handleAddToCart(product);
+                      }}
+                    >
+                      Add to Cart
+                    </FormButton>
                   </li>
                 </ul>
               </Grid>
@@ -83,7 +97,7 @@ export default function SearchResults() {
           })}
       </Grid>
       <div className="loadMore">
-        <LoadeMore
+        <LoadMore
           filterType={filterType}
           setCurrentLimit={setCurrentLimit}
           currenLimit={currenLimit}
