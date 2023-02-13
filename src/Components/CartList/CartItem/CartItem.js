@@ -8,7 +8,7 @@ const CartItem = (product) => {
   const { actions } = useCartStore();
 
   return (
-    <TableRow key={name}>
+    <TableRow>
       <TableCell component="th" scope="row">
         <img src={image} alt={name} width="100px" height="100px" />
       </TableCell>

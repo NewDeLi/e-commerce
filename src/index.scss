@@ -29,6 +29,8 @@ body {
   font-weight: 400;
   line-height: 1;
   color: rgba(0, 0, 0, 0.54);
+  box-shadow: rgba(0, 0, 0, 0.54) 0px 7px 29px 0px;
+  background-color: #d3d3d332;
 }
 
 a {
@@ -46,17 +48,18 @@ a:hover {
   color: #1976d2;
 }
 .linkButton {
-  color: #1976d2;
-  background-color: white;
-  border: 1px solid #1976d2;
+  color: white;
+  border: 1px solid white;
+  min-width: 10rem;
+  text-align: center;
 }
 .linkButton:hover {
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-  color: white;
-  background-color: #1976d2;
-  border: 1px solid white;
+  color: #1976d2;
+  background-color: #1976d239;
+  border: none;
 }
 .Main {
   height: calc(100% - 7rem - 5rem);

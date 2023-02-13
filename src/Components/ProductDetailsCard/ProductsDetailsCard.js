@@ -11,6 +11,7 @@ export default function ProductsDetailsCard() {
   const { productID } = useParams();
   const { actions } = useCartStore();
   const navigate = useNavigate();
+  console.log(products);
 
   useEffect(() => {
     fetchProductByID(productID);
@@ -38,10 +39,14 @@ export default function ProductsDetailsCard() {
             <span>{products.price}€</span>
           </li>
           <li>
-            <FormButton onClick={() => handleAddToCart(products)}>
-              {/*check this with product*/}
-              Add to Cart
-            </FormButton>
+            <span className="button-group">
+              <FormButton onClick={() => navigate("/search")}>
+                Continue Shopping
+              </FormButton>
+              <FormButton onClick={() => handleAddToCart(products)}>
+                Add to Cart
+              </FormButton>
+            </span>
           </li>
           <li>
             <div

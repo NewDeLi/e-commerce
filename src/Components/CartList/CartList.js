@@ -24,6 +24,7 @@ const CartList = ({}) => {
 
   return (
     <div className="cart-list">
+        <h1>Shopping Cart</h1>
       {state.cart.length > 0 ? (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }}>
@@ -37,8 +38,8 @@ const CartList = ({}) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {state.cart.map((item) => (
-                <CartItem {...item} />
+              {state.cart.map((item,index) => (
+                <CartItem {...item} key={index} />
               ))}
             </TableBody>
           </Table>
@@ -51,7 +52,7 @@ const CartList = ({}) => {
         <FormButton onClick={() => navigate("/search")}>
           Continue Shopping
         </FormButton>
-        <FormButton onClick={() => navigate("/")}>Complete Order</FormButton>
+        <FormButton onClick={() => navigate("/myAccount")}>Complete Order</FormButton>
       </div>
     </div>
   );

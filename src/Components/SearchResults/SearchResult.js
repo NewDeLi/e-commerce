@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../../Context Api/ProductContext";
 import FormButton from "../forms/FormButton/FormButton";
 import FormSelect from "../forms/FormSelect/FormSelect";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import "./SearchResult.scss";
 import LoadMore from "../LoadMore/LoadMore";
 import { useCartStore } from "../../Context Api/ShoppingCard/CartContext";
@@ -34,6 +34,7 @@ export default function SearchResults() {
 
   return (
     <div className="searchResults">
+      <h1>Products</h1>
       <FormSelect
         defaultValue={filterType ? filterType : ""} //fix mui warning: filtertype is undefined when component mounts
         label="Search"
@@ -53,7 +54,7 @@ export default function SearchResults() {
         ]}
         onChange={handleFilter}
       />
-      <Grid container direction="row" justifyContent="space-around">
+      <Grid container direction="row" justifyContent="space-between">
         {Array.isArray(products) &&
           products.length > 0 &&
           products.map((product, index) => {
@@ -77,9 +78,9 @@ export default function SearchResults() {
                   </li>
                   <li>
                     <Link to={`/product/${id}`}>
-                      <h3>{name}</h3>
-                      <h4> {category}</h4>
-                      <h5>{price}€</h5>
+                      <Typography>{name}</Typography>
+                      <Typography>{category}</Typography>
+                      <Typography>{price}€</Typography>
                     </Link>
                   </li>
                   <li>

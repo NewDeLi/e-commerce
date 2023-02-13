@@ -1,6 +1,8 @@
 .searchResults {
   width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
+  text-align: center;
   .formRow {
     margin: 1rem auto;
   }
@@ -10,18 +12,18 @@
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: #d3d3d332;
+    align-items: stretch;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 0.5rem;
-    width: 32rem;
+    min-width: 32rem;
     img {
-      width: 24rem;
-      height: 24rem;
+      width: 20rem;
+      height: 20rem;
     }
   }
   .loadMore {
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
   }
 }

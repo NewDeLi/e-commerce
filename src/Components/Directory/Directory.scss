@@ -1,14 +1,27 @@
 .directory {
   height: 100vh;
   display: flex;
+  min-width: 100vw;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-direction: column;
+  justify-content: center;
+
+  color: white;
   .item {
-    width: 50%;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10rem;
+    max-width: max-content;
+    h1 {
+      font-size: 2.5rem;
+    }
+    div {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
   }
 }
 
